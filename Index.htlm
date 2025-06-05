@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test d'Hybridation – FoxyMord</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #f44336;
+    }
+    .question {
+      margin-bottom: 2rem;
+    }
+    button {
+      background-color: #f44336;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .result {
+      background: #111;
+      border: 1px solid #f44336;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test d'Hybridation</h1>
+  <p style="text-align: center; font-style: italic;">"Tu crois savoir qui tu es. Mais que murmure ton reflet ?"</p>
+
+  <div class="question">
+    <h2>1. Choisis un mot dans chaque ligne :</h2>
+    <form id="testForm">
+      <label>
+        A -
+        <select name="q1">
+          <option value="7">Silence</option>
+          <option value="3">Cri</option>
+          <option value="5">Souffle</option>
+        </select>
+      </label>
+      <br><br>
+      <label>
+        B -
+        <select name="q2">
+          <option value="6">Lumière</option>
+          <option value="4">Ombre</option>
+          <option value="5">Reflet</option>
+        </select>
+      </label>
+      <br><br>
+      <label>
+        C -
+        <select name="q3">
+          <option value="2">Soumission</option>
+          <option value="6">Doute</option>
+          <option value="9">Insoumission</option>
+        </select>
+      </label>
+      <br><br>
+      <button type="button" onclick="calculateResult()">Voir mon hybridation</button>
+    </form>
+  </div>
+
+  <div id="result" class="result" style="display: none;"></div>
+
+  <script>
+    function calculateResult() {
+      const form = document.getElementById('testForm');
+      const q1 = parseInt(form.q1.value);
+      const q2 = parseInt(form.q2.value);
+      const q3 = parseInt(form.q3.value);
+      const total = q1 + q2 + q3;
+      let message = "";
+
+      if (total <= 10) {
+        message = "<strong>Hybridation : 20%</strong><br>Tu dors encore. Mais tu rêves déjà juste.";
+      } else if (total <= 15) {
+        message = "<strong>Hybridation : 47%</strong><br>La faille est là, sous ta peau.";
+      } else {
+        message = "<strong>Hybridation : 73%</strong><br>Tu n’es plus entièrement humain… et c’est parfait.";
+      }
+
+      document.getElementById('result').innerHTML = message;
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
